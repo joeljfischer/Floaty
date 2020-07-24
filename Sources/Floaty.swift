@@ -312,6 +312,8 @@ open class Floaty: UIView {
    An accessibility button for the main Fab Button
    */
   fileprivate var accessibilityView : UIView = UIView()
+
+  fileprivate var hasDrawn = false
   
   // MARK: - Initialize
   
@@ -368,6 +370,9 @@ open class Floaty: UIView {
    */
   open override func draw(_ rect: CGRect) {
     super.draw(rect)
+
+    guard hasDrawn == false else { return }
+    hasDrawn = true
     
     layer.shouldRasterize = true
     layer.rasterizationScale = UIScreen.main.scale
